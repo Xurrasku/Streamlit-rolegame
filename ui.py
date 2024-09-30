@@ -18,16 +18,18 @@ if 'api_connection' not in st.session_state:
 
 with st.sidebar:
     API_KEY = st.text_input("gorq API Key", type="password")
-    print(API_KEY)
-    "[Get a gorq API key](https://console.groq.com/keys)"
+    "[Get a groq API key](https://console.groq.com/keys)"
     st.button(':red[Clear all]', on_click=clear_all, args=(API_KEY,))
     if len(API_KEY) > 50:
         st.session_state['api_connection'] = True
 
+        
+
 
 
 if 'game' not in st.session_state:
-    st.session_state['game'] = MyGame(API_KEY)
+    if st.session_state['api_connection']:
+        st.session_state['game'] = MyGame(API_KEY)
 
 if 'context_created' not in st.session_state:
     st.session_state['context_created'] = False
