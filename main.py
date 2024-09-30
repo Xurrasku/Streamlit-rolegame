@@ -1,7 +1,6 @@
 from groq import Groq
 from pydantic import BaseModel
 
-import inquirer
 import json
 
 
